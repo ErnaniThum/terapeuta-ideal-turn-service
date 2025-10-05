@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  coturn:
+    image: coturn/coturn:4.6.3      # pin to the current stable tag
+    container_name: coturn
+    restart: unless-stopped
+    ports:
+      # STUN/TURN
+      - "3478:3478"
+      - "3478:3478/udp"
+      # TLS-TURN
+      - "5349:5349"
+      - "5349:5349/udp"
+      # RTP/RTCP relays (40 ports for 20 concurrent calls)
+      - "49160-49200:49160-49200/udp"
+    env_file:
+      - .env
+    environment:
+      # You can override or expand values if needed
+      DETECT_EXTERNAL_IP: ${DETECT_EXTERNAL_IP}
+      STATIC_AUTH_SECRET: ${TURN_STATIC_AUTH_SECRET}
+    volumes:
+      # Bind your custom conf + persistent database & logs
+      - "./turnserver.conf:/etc/coturn/turnserver.conf:ro"
+      - "coturn-data:/var/lib/coturn"
+      - "coturn-logs:/var/log"
+    # Use host networking if you prefer not to publish individual ports
+    # network_mode: "host"
+
+volumes:
+  coturn-data:
+  coturn-logs:
