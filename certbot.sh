@@ -17,7 +17,8 @@ docker run -it --rm --name certbot \
   -v "$(pwd)/certbot:/var/www/certbot" \
   certbot/certbot certonly --webroot \
   --webroot-path /var/www/certbot \
-  -d your-domain.com -d www.your-domain.com
+  --email ernani.thum@gmail.com \
+  -d turn.terapeuta-ideal.com.br -d ws.terapeuta-ideal.com.br
 
 echo "Stopping nginx container..."
 docker stop "$NGINX_PID"
