@@ -6,7 +6,6 @@ NGINX_PID=$(docker run -d \
   --name nginx \
   --rm \
     -p 80:80 \
-  -p 443:443 \
   -v "$(pwd)/default.conf:/etc/nginx/conf.d/default.conf:ro" \
   -v "$(pwd)/letsencrypt:/etc/letsencrypt" \
   -v "$(pwd)/certbot:/var/www/certbot" \
