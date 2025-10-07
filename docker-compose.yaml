@@ -25,6 +25,7 @@ services:
       - "./turnserver.conf:/etc/coturn/turnserver.conf:ro"
       - "coturn-data:/var/lib/coturn"
       - "coturn-logs:/var/log"
+      - "./letsencrypt:/etc/letsencrypt:ro" 
     # Use host networking if you prefer not to publish individual ports
     # network_mode: "host"
 
