@@ -12,6 +12,8 @@ services:
       # TLS-TURN
       - "5349:5349"
       - "5349:5349/udp"
+      # CLI interface
+      - "5766:5766"
       # RTP/RTCP relays (40 ports for 20 concurrent calls)
       - "49160-49200:49160-49200/udp"
     env_file:
@@ -20,6 +22,7 @@ services:
       # You can override or expand values if needed
       DETECT_EXTERNAL_IP: ${DETECT_EXTERNAL_IP}
       STATIC_AUTH_SECRET: ${TURN_STATIC_AUTH_SECRET}
+      CLI_PASSWORD: ${CLI_PASSWORD}
     volumes:
       # Bind your custom conf + persistent database & logs
       - "./turnserver.conf:/etc/coturn/turnserver.conf:ro"
