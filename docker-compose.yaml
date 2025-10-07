@@ -28,10 +28,10 @@ services:
       - "./turnserver.conf:/etc/coturn/turnserver.conf:ro"
       - "coturn-data:/var/lib/coturn"
       - "coturn-logs:/var/log"
-      - "./letsencrypt:/etc/letsencrypt:ro" 
+      - "./letsencrypt/live/turn.terapeuta-ideal.com.br/fullchain.pem:/etc/ssl/certs/cert.pem:ro"
+      - "./letsencrypt/live/turn.terapeuta-ideal.com.br/privkey.pem:/etc/ssl/private/privkey.pem:ro"
     # Use host networking if you prefer not to publish individual ports
     # network_mode: "host"
-
 volumes:
   coturn-data:
   coturn-logs:
