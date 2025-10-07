@@ -1,2 +1,3 @@
 letsencrypt
 certbot
+.env
