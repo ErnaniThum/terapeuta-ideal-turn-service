@@ -1,9 +1,9 @@
 version: "3.9"
 
 services:
-  coturn:
+  terapeuta-ideal-coturn-server:
     image: coturn/coturn:4.7-alpine  
-    container_name: coturn
+    container_name: terapeuta-ideal-coturn-server
     restart: unless-stopped
     ports:
       # STUN/TURN
