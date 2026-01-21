@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   terapeuta-ideal-coturn-server:
     image: coturn/coturn:4.7-alpine  
